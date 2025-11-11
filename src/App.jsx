@@ -1,12 +1,19 @@
-import { useState } from 'react'
+import { Head } from './components/Head'
+import { TodoList } from './components/TodoList'
+import { AddTask } from './components/AddTask'
+import { ProgressBar } from './components/ProgressBar'
 
 function App() {
-
   return (
     <>
-      <h1 class="text-3xl font-bold underline bold">
-        Hello world!
-      </h1>
+      <div className='container mx-auto '>
+        <Head/>
+        <div className='max-w-[35rem] mx-auto p-1'>
+          <ProgressBar/>
+          <AddTask/>
+          <TodoList/>
+        </div>
+      </div>
     </>
   )
 }
