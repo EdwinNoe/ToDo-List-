@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { Head } from './components/Head'
 import { TodoList } from './components/TodoList'
 import { AddTask } from './components/AddTask'
@@ -10,12 +10,17 @@ function App() {
 
     const createTask = (taskTitle) => {
       const newTask = {
-        id: tasks.length,  
+        id: Math.floor(Math.random() * 100),  
         title: taskTitle,
         completed: false
       };
       setTasks([...tasks, newTask]);
     };
+
+    const deleteTask=(taskId)=>{
+      const updatedTasks = tasks.filter( (task) => task.id !== taskId);
+      setTasks(updatedTasks);
+    }
 
   return (
     <>
@@ -24,7 +29,7 @@ function App() {
         <div className='max-w-[35rem] mx-auto p-1'>
           <ProgressBar/>
           <AddTask createTask={createTask}/>
-          <TodoList tasks={tasks}/>
+          <TodoList tasks={tasks} deleteTask={deleteTask}/>
         </div>
       </div>
     </>

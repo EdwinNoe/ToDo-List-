@@ -2,7 +2,7 @@ import { useState } from "react";
 import DeleteIcon from "../assets/Delete.svg";
 import EditIcon from "../assets/Edit.svg";
 
-export function TodoItem({task}) {
+export function TodoItem({task , deleteTask}) {
 
   const [completed, setCompleted] = useState(task.completed);
 
@@ -28,7 +28,7 @@ export function TodoItem({task}) {
       </div>
   
       <div className="flex gap-3">
-        <button className="cursor-pointer">
+        <button className="cursor-pointer" onClick={()=>deleteTask(task.id)}>
           <img className="w-5" src={DeleteIcon} />
         </button>
 
