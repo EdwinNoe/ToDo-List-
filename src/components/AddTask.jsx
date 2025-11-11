@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import LogoIcon from "../assets/Add.svg"
 
-export function AddTask() {
+export function AddTask({createTask}) {
+
+
   const [value, setValue] = useState('');
 
   const onChange = (e) => setValue(e.target.value);
   const onAdd = () => {
     if (!value) return;
+    createTask(value)
     setValue('');
   };
 

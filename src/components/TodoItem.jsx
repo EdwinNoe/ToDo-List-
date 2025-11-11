@@ -2,9 +2,9 @@ import { useState } from "react";
 import DeleteIcon from "../assets/Delete.svg";
 import EditIcon from "../assets/Edit.svg";
 
-export function TodoItem({ Completed=true, title="Some Task"}) {
+export function TodoItem({task}) {
 
-  const [completed, setCompleted] = useState(Completed);
+  const [completed, setCompleted] = useState(task.completed);
 
   const completeTask = () => setCompleted(!completed);
 
@@ -21,8 +21,8 @@ export function TodoItem({ Completed=true, title="Some Task"}) {
         >
         </button>
 
-        <span className={`ml-3 ${Completed ? 'line-through' : ''}`}>
-          {title}
+        <span className={`ml-3 ${completed ? 'line-through' : ''}`}>
+          {task.title}
         </span>
 
       </div>

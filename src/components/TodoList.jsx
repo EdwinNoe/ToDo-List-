@@ -1,14 +1,13 @@
 import {TodoItem} from "./TodoItem.jsx"
 
-export function TodoList(){
+export function TodoList({tasks}){
+    if (!tasks || tasks.length === 0) return null;
     return(
-        <div className="flex justify-center flex-col">
-            <TodoItem/>
-            <TodoItem/>
-            <TodoItem/>
-            <TodoItem/>
+        <div className="flex flex-col gap-2">
+            {tasks.map(task => (
+                <TodoItem key={task.id} task={task}/>
+            ))}
         </div>
-        
     )
     
 }
