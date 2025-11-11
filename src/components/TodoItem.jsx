@@ -2,11 +2,21 @@ import { useState } from "react";
 import DeleteIcon from "../assets/Delete.svg";
 import EditIcon from "../assets/Edit.svg";
 
-export function TodoItem({task , deleteTask}) {
+export function TodoItem({task , deleteTask, updateTask}) {
 
   const [completed, setCompleted] = useState(task.completed);
+  const [isEditing, setIsEditing] = useState(false); 
+  const [newTitle, setNewTitle] = useState(task.title);
+
 
   const completeTask = () => setCompleted(!completed);
+
+  const onEdit = () => {
+    if (isEditing) {
+      updateTask(task.id, newTitle); 
+    }
+    setIsEditing(!isEditing); 
+  };
 
   return (
     <div className=" my-3 border border-[#B9AB93] flex justify-between items-center p-4 w-full">
@@ -20,10 +30,18 @@ export function TodoItem({task , deleteTask}) {
             `}
         >
         </button>
-
-        <span className={`ml-3 ${completed ? 'line-through' : ''}`}>
-          {task.title}
-        </span>
+        {isEditing ? (
+          <input
+            type="text"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+            className="ml-3 p-1 border rounded"
+          />
+        ) : (
+          <span className={`ml-3 ${completed ? "line-through" : ""}`}>
+            {task.title}
+          </span>
+        )}
 
       </div>
   
@@ -33,7 +51,7 @@ export function TodoItem({task , deleteTask}) {
         </button>
 
         <button className="cursor-pointer">
-          <img className="w-5" src={EditIcon} />
+          <img className="w-5" src={EditIcon} onClick={()=>onEdit()} />
         </button>
       </div>
     </div>
