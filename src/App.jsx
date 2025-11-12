@@ -16,7 +16,7 @@ function App() {
     <>
       <div className='container mx-auto '>
         <Head/>
-        <div className='max-w-[35rem] mx-auto p-1'>
+        <div className='max-w-[30rem] mx-auto p-1'>
           <Filter onFilter={onFilter}/>
           <ProgressBar tasks={tasks}/>
           <AddTask createTask={createTask}/>

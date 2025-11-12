@@ -14,7 +14,7 @@ export function AddTask({createTask}) {
   };
 
   return (
-    <div className="flex items-center gap-2 my-3 ">
+    <div className="flex items-center gap-2 mb-3 mt-7 ">
       <input 
         type="text"
         value={value} 

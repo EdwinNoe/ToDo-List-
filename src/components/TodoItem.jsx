@@ -22,13 +22,14 @@ export function TodoItem({task , deleteTask, updateTask}) {
   };
 
   return (
-    <div className=" my-3 border border-[#B9AB93] flex justify-between items-center p-4 w-full">
+    <div className="transform my-1 border border-[#B9AB93] flex justify-between items-center p-4 w-full">
       
       <div className="flex justify-center items-center">
         <button
             onClick={completeTask}
             className={`
             w-7 h-7 rounded-full border-2 cursor-pointer
+            transition-colors duration-600 ease-in-out
             ${ completed ? "bg-[#22C55E] border-[#22C55E]" : "bg-black border-[#1C9D4C]"}
             `}
         >
