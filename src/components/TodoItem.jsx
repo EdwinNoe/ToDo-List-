@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DeleteIcon from "../assets/Delete.svg";
 import EditIcon from "../assets/Edit.svg";
+import Check from "../assets/Check.svg"
 
 export function TodoItem({task , deleteTask, updateTask}) {
 
@@ -8,12 +9,14 @@ export function TodoItem({task , deleteTask, updateTask}) {
   const [isEditing, setIsEditing] = useState(false); 
   const [newTitle, setNewTitle] = useState(task.title);
 
-
-  const completeTask = () => setCompleted(!completed);
+  const completeTask = () => {
+    updateTask(task.id, { completed: !task.completed });
+    setCompleted(!completed)
+  };
 
   const onEdit = () => {
     if (isEditing) {
-      updateTask(task.id, newTitle); 
+      updateTask(task.id, { title: newTitle }); 
     }
     setIsEditing(!isEditing); 
   };
@@ -47,11 +50,16 @@ export function TodoItem({task , deleteTask, updateTask}) {
   
       <div className="flex gap-3">
         <button className="cursor-pointer" onClick={()=>deleteTask(task.id)}>
-          <img className="w-5" src={DeleteIcon} />
+              <img className="w-5" src={DeleteIcon} />
         </button>
 
-        <button className="cursor-pointer">
-          <img className="w-5" src={EditIcon} onClick={()=>onEdit()} />
+        <button className="cursor-pointer" onClick={()=>onEdit()}>
+          {
+            isEditing?(
+              <img className="w-5" src={Check} />
+            )
+            : <img className="w-5" src={EditIcon}  /> 
+          }
         </button>
       </div>
     </div>

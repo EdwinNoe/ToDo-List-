@@ -7,7 +7,7 @@ import { ProgressBar } from './components/ProgressBar'
 function App() {
 
     const [tasks, setTasks] = useState([]); 
-
+    
     const createTask = (taskTitle) => {
       const newTask = {
         id: Math.floor(Math.random() * 100),  
@@ -22,9 +22,9 @@ function App() {
       setTasks(updatedTasks);
     }
 
-    const updateTask = (taskId, newTitle) => {
+    const updateTask = (taskId, updates) => {
       const updatedTasks = tasks.map(task =>
-        task.id == taskId ? { ...task, title: newTitle } : task
+        task.id == taskId ? { ...task, ...updates} : task
       );
       setTasks(updatedTasks);
     };
@@ -34,7 +34,7 @@ function App() {
       <div className='container mx-auto '>
         <Head/>
         <div className='max-w-[35rem] mx-auto p-1'>
-          <ProgressBar/>
+          <ProgressBar tasks={tasks}/>
           <AddTask createTask={createTask}/>
           <TodoList tasks={tasks} deleteTask={deleteTask} updateTask={updateTask}/>
         </div>
