@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import LogoIcon from "../assets/Add.svg"
 
-export function AddTask({createTask}) {
-
-
+export function AddTask({ createTask }) {
+  
   const [value, setValue] = useState('');
 
   const onChange = (e) => setValue(e.target.value);
@@ -15,11 +14,11 @@ export function AddTask({createTask}) {
 
   return (
     <div className="flex items-center gap-2 mb-3 mt-7 ">
-      <input 
+      <input
         type="text"
-        value={value} 
-        onChange={onChange} 
-        placeholder="Write your next task" 
+        value={value}
+        onChange={onChange}
+        placeholder="Write your next task"
         className="h-13 flex-1 bg-gray-800 text-gray-100 placeholder-gray-400 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-green-500"
       />
       <button
